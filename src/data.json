@@ -19,16 +19,16 @@
   ],
   "work": [
     {
-      "company": "Meta",
-      "position": "Software Engineer",
-      "location": "Menlo Park, CA",
-      "startDate": "2015",
-      "endDate": "2017",
+      "company": "Google",
+      "position": "Senior Software Engineer",
+      "location": "Mountain View, CA",
+      "startDate": "2020",
+      "endDate": "Present",
       "highlights": [
-        "Developed backend systems for social media platform",
-        "Optimized database performance resulting in 20% faster response times",
-        "Collaborated with cross-functional teams to deliver features on schedule",
-        "Implemented RESTful APIs for external integrations"
+        "Developing machine learning algorithms for search optimization and personalized content recommendations",
+        "Mentoring junior engineers in coding best practices and fostering a culture of continuous learning",
+        "Led performance optimization initiatives resulting in 40% faster response times and enhanced user experience",
+        "Collaborated with product teams to define technical requirements and priorities for new feature development"
       ]
     },
     {
@@ -38,23 +38,25 @@
       "startDate": "2017",
       "endDate": "2020",
       "highlights": [
-        "Designed and implemented microservices architecture",
-        "Led a team of 5 engineers in project delivery",
-        "Improved system reliability by 30% through automated testing",
-        "Contributed to code review process and maintained code quality standards"
+        "Designed and implemented microservices architecture to improve system scalability",
+        "Collaborated with product teams to define technical requirements and priorities for new feature development",
+        "Led a team of 5 engineers in project delivery and coordinated sprint planning activities",
+        "Improved system reliability by 30% through automated testing and continuous integration practices",
+        "Contributed to code review process and maintained code quality standards across the team"
       ]
     },
     {
-      "company": "Google",
-      "position": "Senior Software Engineer",
-      "location": "Mountain View, CA",
-      "startDate": "2020",
-      "endDate": "Present",
+      "company": "Meta",
+      "position": "Software Engineer",
+      "location": "Menlo Park, CA",
+      "startDate": "2015",
+      "endDate": "2017",
       "highlights": [
-        "Developing machine learning algorithms for search optimization",
-        "Mentoring junior engineers in coding best practices",
-        "Led performance optimization initiatives resulting in 40% faster response times",
-        "Collaborated with product teams to define technical requirements and priorities"
+        "Developed backend systems for social media platform",
+        "Optimized database performance resulting in 20% faster response times",
+        "Collaborated with cross-functional teams to deliver features on schedule and meet project milestones",
+        "Collaborated with product teams to define technical requirements and priorities for new feature development",
+        "Implemented RESTful APIs for external integrations and ensured data security measures"
       ]
     }
   ],
@@ -79,14 +81,14 @@
     {
       "description": "The library for web and native user interfaces.",
       "url": "https://github.com/facebook/react",
-      "name": "react",
+      "name": "React.js",
       "repo": "facebook/react",
       "stars": "221k"
     },
     {
       "description": "Cybernetically enhanced web apps.",
       "url": "https://github.com/sveltejs/svelte",
-      "name": "svelte",
+      "name": "Svelte.js",
       "repo": "sveltejs/svelte",
       "stars": "76.3k"
     },

@@ -5,6 +5,7 @@ import GlobeIcon from "src/components/GlobeIcon.astro";
 import MailIcon from "src/components/MailIcon.astro";
 import LocationIcon from "src/components/LocationIcon.astro";
 import PhoneIcon from "src/components/PhoneIcon.astro";
+import ArrowUpRightIcon from "src/components/ArrowUpRightIcon.astro";
 import PrintButton from "src/components/PrintButton.astro";
 
 import Layout from "../layouts/Layout.astro";
@@ -18,6 +19,10 @@ const metaStyle = flex({
   gap: "2",
   justify: "flex-end",
   textDecoration: "none",
+  "&:first-child": {
+    position: "relative",
+    top: "1px",
+  },
 });
 
 const subtitle = css({ fontWeight: "bold", fontSize: "lg" });
@@ -64,6 +69,7 @@ const formattedWebsite = data.meta.website.replace(
           class={css({
             flexGrow: { sm: "1", _print: "1" },
             mb: { base: "8", sm: "0", _print: "0" },
+            mt: "-5px", // Align top lines despite line-height
           })}
         >
           <h1
@@ -73,6 +79,7 @@ const formattedWebsite = data.meta.website.replace(
               textTransform: "uppercase",
               fontWeight: "bold",
               mb: "2",
+              lineHeight: "1",
             })}
           >
             {data.meta.name}
@@ -92,8 +99,13 @@ const formattedWebsite = data.meta.website.replace(
           <div class={metaStyle}>
             <LocationIcon />{data.meta.location}
           </div>
-          <a href={data.meta.website} target="_blank" class={metaStyle}
-            ><GlobeIcon />{formattedWebsite}</a
+          <a
+            href={data.meta.website}
+            target="_blank"
+            class:list={[
+              metaStyle,
+              css({ "&:hover,&:focus": { textDecoration: "underline" } }),
+            ]}><GlobeIcon />{formattedWebsite}</a
           >
         </div>
       </header>
@@ -144,40 +156,52 @@ const formattedWebsite = data.meta.website.replace(
       <SectionHeader>Open Source</SectionHeader>
       <ul class={flex({ direction: "column", gap: { base: "6" } })}>
         {
-          data.projects.map((project) => (
-            <li
-              class={flex({ direction: "column", gap: "2" })}
-              data-project={project.repo}
-            >
-              <div class={flex()}>
-                <h3 class={subtitle}>{project.name}</h3>
-                <p
-                  class={flex({
-                    fontWeight: "bold",
-                    ml: "auto",
-                    align: "center",
-                    gap: "1.5",
-                  })}
-                  aria-label={`${project.stars} GitHub stars`}
-                >
-                  <span
-                    aria-hidden="true"
-                    class={css({
-                      position: "relative",
-                      bottom: "1px",
-                    })}
-                  >
-                    <GithubStarIcon />
-                  </span>
-                  <span class="project-stars">{project.stars}</span>
-                </p>
-              </div>
-              <p>{project.description}</p>
-              <a href={project.url} target="_blank">
-                {project.url}
+          data.projects.map((project) => {
+            const titleChild = project.url ? (
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noreferrer"
+                class={flex({ align: "center", textDecoration: "none" })}
+              >
+                {project.name}
+                <ArrowUpRightIcon />
               </a>
-            </li>
-          ))
+            ) : (
+              <>{project.name}</>
+            );
+            return (
+              <li
+                class={flex({ direction: "column", gap: "2" })}
+                data-project={project.repo}
+              >
+                <div class={flex()}>
+                  <h3 class={subtitle}>{titleChild}</h3>
+                  <p
+                    class={flex({
+                      fontWeight: "bold",
+                      ml: "auto",
+                      align: "center",
+                      gap: "1.5",
+                    })}
+                    aria-label={`${project.stars} GitHub stars`}
+                  >
+                    <span
+                      aria-hidden="true"
+                      class={css({
+                        position: "relative",
+                        bottom: "1px",
+                      })}
+                    >
+                      <GithubStarIcon />
+                    </span>
+                    <span class="project-stars">{project.stars}</span>
+                  </p>
+                </div>
+                <p>{project.description}</p>
+              </li>
+            );
+          })
         }
       </ul>
       <SectionHeader>Education</SectionHeader>
