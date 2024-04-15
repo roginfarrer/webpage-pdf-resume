@@ -1,0 +1,28 @@
+---
+import { css } from "styled-system/css";
+import { flex } from "styled-system/patterns";
+---
+
+<h2
+  class={flex({
+    gap: "3",
+    fontSize: "2xl",
+    fontWeight: "bold",
+    align: "center",
+    color: "$accent",
+    mt: { base: "7", _print: "7" },
+    mb: { base: "4", _print: "4" },
+    textTransform: "uppercase",
+  })}
+>
+  <slot />
+  <div
+    class={css({
+      bg: "$accent",
+      height: "4px",
+      borderRadius: "full",
+      flexGrow: "1",
+    })}
+  >
+  </div>
+</h2>

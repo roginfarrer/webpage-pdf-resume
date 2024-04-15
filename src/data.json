@@ -1,0 +1,101 @@
+{
+  "meta": {
+    "name": "Emily Johnson",
+    "title": "Software Engineer",
+    "website": "https://emjo.biz",
+    "location": "Seattle, WA",
+    "email": "emily.johnson@example.com",
+    "phone": "+1 (555) 987-6543",
+    "bio": "Dedicated software engineer with a strong background in building robust and scalable applications. Skilled in Java, Python, and JavaScript technologies. Experienced with Meta, Amazon, and Google."
+  },
+  "education": [
+    {
+      "institution": "University of Washington",
+      "location": "Seattle, WA",
+      "area": "Computer Science",
+      "degreeType": "Bachelor of Science",
+      "endDate": "2015"
+    }
+  ],
+  "work": [
+    {
+      "company": "Meta",
+      "position": "Software Engineer",
+      "location": "Menlo Park, CA",
+      "startDate": "2015",
+      "endDate": "2017",
+      "highlights": [
+        "Developed backend systems for social media platform",
+        "Optimized database performance resulting in 20% faster response times",
+        "Collaborated with cross-functional teams to deliver features on schedule",
+        "Implemented RESTful APIs for external integrations"
+      ]
+    },
+    {
+      "company": "Amazon",
+      "position": "Software Development Engineer",
+      "location": "Seattle, WA",
+      "startDate": "2017",
+      "endDate": "2020",
+      "highlights": [
+        "Designed and implemented microservices architecture",
+        "Led a team of 5 engineers in project delivery",
+        "Improved system reliability by 30% through automated testing",
+        "Contributed to code review process and maintained code quality standards"
+      ]
+    },
+    {
+      "company": "Google",
+      "position": "Senior Software Engineer",
+      "location": "Mountain View, CA",
+      "startDate": "2020",
+      "endDate": "Present",
+      "highlights": [
+        "Developing machine learning algorithms for search optimization",
+        "Mentoring junior engineers in coding best practices",
+        "Led performance optimization initiatives resulting in 40% faster response times",
+        "Collaborated with product teams to define technical requirements and priorities"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "Programming Languages",
+      "keywords": ["Java", "Python", "JavaScript"]
+    },
+    {
+      "name": "Tools & Technologies",
+      "keywords": [
+        "Docker",
+        "Kubernetes",
+        "Git",
+        "MySQL",
+        "MongoDB",
+        "PostgreSQL"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "description": "The library for web and native user interfaces.",
+      "url": "https://github.com/facebook/react",
+      "name": "react",
+      "repo": "facebook/react",
+      "stars": "221k"
+    },
+    {
+      "description": "Cybernetically enhanced web apps.",
+      "url": "https://github.com/sveltejs/svelte",
+      "name": "svelte",
+      "repo": "sveltejs/svelte",
+      "stars": "76.3k"
+    },
+    {
+      "description": "Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the web.",
+      "url": "https://github.com/vuejs/core",
+      "name": "Vue.js",
+      "repo": "vuejs/core",
+      "stars": "44.4k"
+    }
+  ]
+}

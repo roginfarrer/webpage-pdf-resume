@@ -1,0 +1,83 @@
+---
+import { css } from "styled-system/css";
+---
+
+<script>
+  const wrapper = document.querySelector("#print-prompt") as
+    | HTMLElement
+    | undefined;
+  const dismissBtn = document.querySelector("#print-close") as
+    | HTMLElement
+    | undefined;
+
+  dismissBtn?.addEventListener("click", () => {
+    requestAnimationFrame(() => {
+      wrapper?.classList.add("animateOut");
+      setTimeout(() => {
+        wrapper?.remove();
+      }, 1000);
+    });
+  });
+  document.querySelector("#print-btn")?.addEventListener("click", () => {
+    window.print();
+  });
+</script>
+
+<div
+  class={css({
+    borderRadius: "2xl",
+    bg: "$accent",
+    p: "4",
+    pr: "10",
+    boxShadow: "2xl",
+    fontWeight: "500",
+    display: { base: "none", sm: "block", _print: "none" },
+    position: "relative",
+    transition: "transform 0.5s ease",
+    "&.animateOut": {
+      animation: "0.75s speedOutRight ease-in-out forwards",
+    },
+  })}
+  id="print-prompt"
+>
+  <button
+    id="print-btn"
+    class={css({
+      color: "white",
+      textDecoration: "underline",
+      "&:focus, &:hover": {
+        textDecoration: "none",
+      },
+    })}>Print or Save as PDF</button
+  >
+  <button
+    id="print-close"
+    aria-label="Dismiss print prompt"
+    class={css({
+      color: "white",
+      position: "absolute",
+      top: "2",
+      right: "2",
+      fontSize: "1.25em",
+      borderRadius: "md",
+      transition: "background 0.3s ease",
+      "&:focus, &:hover": {
+        background: "indigo.500",
+      },
+    })}
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      viewBox="0 0 24 24"
+      ><path
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="1.5"
+        d="m7 7l10 10M7 17L17 7"></path></svg
+    >
+  </button>
+</div>
