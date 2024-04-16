@@ -14,7 +14,6 @@
     "@astrojs/check": "^0.5.10",
     "@fontsource-variable/rubik": "^5.0.21",
     "@pandacss/dev": "^0.37.2",
-    "@pandacss/preset-open-props": "^0.37.2",
     "astro": "^4.6.1",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
@@ -23,5 +22,5 @@
   "author": "Rogin Farrer <rogin@roginfarrer.com>",
   "license": "NonCommercial-ShareAlike 1.0 Generic",
   "description": "A tasteful, printable resume written using Astro and PandaCSS.",
-  "homepage": "https://github.com/roginfarrer/resume"
+  "homepage": "https://github.com/roginfarrer/webpage-pdf-resume"
 }
