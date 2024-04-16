@@ -35,7 +35,7 @@ export default defineConfig({
             DEFAULT: {
               value: {
                 base: "{colors.blue.700}",
-                _osDark: "{colors.blue.600}",
+                _osDark: "{colors.blue.500}",
               },
             },
             50: { value: "{colors.blue.50}" },
@@ -82,6 +82,9 @@ export default defineConfig({
         fontSize: "md",
         lineHeight: "1.15",
         textWrap: "pretty",
+        xl: {
+          fontSize: "lg",
+        },
         a: {
           textDecoration: "underline",
         },

@@ -112,11 +112,11 @@ const formattedWebsite = data.meta.website.replace(
       <SectionHeader>About Me</SectionHeader>
       <p>{data.meta.bio}</p>
       <SectionHeader>Work</SectionHeader>
-      <div class={flex({ direction: "column", gap: "6" })}>
+      <div class={flex({ direction: "column", gap: {base: "6", xl: '8'} })}>
         {
           data.work.map((work) => {
             return (
-              <div>
+              <div class={css({xl: {mb: '1'}})}>
                 <h3
                   class={css({ fontSize: "lg", fontWeight: "bold", mb: "1" })}
                 >
@@ -140,8 +140,8 @@ const formattedWebsite = data.meta.website.replace(
                   class={flex({
                     direction: "column",
                     pl: "4",
-                    gap: "2",
-                    mt: "2",
+                    gap: {base: "2", xl: '3'},
+                    mt: {base: "2", xl: '3'},
                   })}
                 >
                   {work.highlights.map((highlight) => (
@@ -165,7 +165,7 @@ const formattedWebsite = data.meta.website.replace(
                 class={flex({ align: "center", textDecoration: "none" })}
               >
                 {project.name}
-                <ArrowUpRightIcon />
+                <ArrowUpRightIcon class={css({color: 'slate.500', 'a:hover &': {color: 'currentColor'}})} />
               </a>
             ) : (
               <>{project.name}</>
