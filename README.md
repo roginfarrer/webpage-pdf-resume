@@ -2,6 +2,8 @@
 
 A straightforward resume or CV template for the web, print, or PDF. Built with [Astro](https://astro.build) and [PandaCSS](https://panda-css.com).
 
+> [View demo](https://webpage-pdf-resume.vercel.app)
+
 ## Who's this for?
 
 As a web developer, I got frustrated with Google Doc templates or resume builder sites that either cost a lot of money or have problems with their designs. When putting together my one-page resume, I knew how I wanted things to look, and I just wanted to use markup and CSS to make it!
