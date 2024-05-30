@@ -79,23 +79,14 @@ export default defineConfig({
         color: "$bodyText",
         bg: "$page",
         fontFamily: '"Rubik Variable", sans-serif',
-        fontSize: "md",
-        lineHeight: "1.15",
+        fontSize: { base: "md", xl: "lg" },
+        lineHeight: "1.25",
         textWrap: "pretty",
-        xl: {
-          fontSize: "lg",
-        },
         a: {
           textDecoration: "underline",
         },
-      },
-      html: {
-        // backgroundImage: "url(/background-pattern.svg)",
-        _osDark: {
-          // backgroundImage: "url(/background-triangles.svg)",
-        },
         _print: {
-          background: "none",
+          lineHeight: "1.15",
         },
       },
     },

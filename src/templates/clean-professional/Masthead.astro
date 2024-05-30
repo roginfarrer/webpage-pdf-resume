@@ -1,0 +1,77 @@
+---
+import GlobeIcon from "src/components/GlobeIcon.astro";
+import MailIcon from "src/components/MailIcon.astro";
+import LocationIcon from "src/components/LocationIcon.astro";
+import PhoneIcon from "src/components/PhoneIcon.astro";
+
+import { css } from "styled-system/css";
+import { flex } from "styled-system/patterns";
+import data from "../../data.json";
+
+const metaStyle = flex({
+  align: "center",
+  gap: "2",
+  justify: "flex-end",
+  textDecoration: "none",
+  "&:first-child": {
+    position: "relative",
+    top: "1px",
+  },
+});
+
+const formattedWebsite = data.meta.website.replace(
+  /^http[s]?:\/\/[[w]{3}\.]?/,
+  "",
+);
+---
+
+<header
+  class={flex({
+    mb: "8",
+    direction: { base: "column", sm: "row", _print: "row" },
+  })}
+>
+  <div
+    class={css({
+      flexGrow: { sm: "1", _print: "1" },
+      mb: { base: "8", sm: "0", _print: "0" },
+      mt: "-5px", // Align top lines despite line-height
+    })}
+  >
+    <h1
+      class={css({
+        color: "$accent",
+        fontSize: "4xl",
+        textTransform: "uppercase",
+        fontWeight: "bold",
+        mb: "2",
+        lineHeight: "1",
+      })}
+    >
+      {data.meta.name}
+    </h1>
+    <p class={css({ fontSize: "md" })}>{data.meta.title}</p>
+  </div>
+  <div
+    class={flex({
+      textAlign: { sm: "right", _print: "right" },
+      gap: "1.5",
+      direction: "column",
+      align: { base: "flex-start", sm: "flex-end", _print: "flex-end" },
+    })}
+  >
+    <div class={metaStyle}><MailIcon />{data.meta.email}</div>
+    <div class={metaStyle}><PhoneIcon />{data.meta.phone}</div>
+    <div class={metaStyle}>
+      <LocationIcon />{data.meta.location}
+    </div>
+    <a
+      href={data.meta.website}
+      target="_blank"
+      class:list={[
+        metaStyle,
+        css({ "&:hover,&:focus": { textDecoration: "underline" } }),
+      ]}><GlobeIcon />{formattedWebsite}</a
+    >
+  </div>
+</header>

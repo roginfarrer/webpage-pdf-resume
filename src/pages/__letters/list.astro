@@ -1,0 +1,19 @@
+---
+import CoverLetter from "../../templates/clean-professional/CoverLetter.astro";
+import { getCollection } from "astro:content";
+import { flex } from "styled-system/patterns";
+
+const allLetters = await getCollection("letters");
+---
+
+<CoverLetter>
+  <nav class={flex({ direction: "column", gap: "4" })}>
+    {
+      allLetters.map((p) => (
+        <a href={`/letters/${p.slug}`}>
+          {p.data.company} - {p.data.title}
+        </a>
+      ))
+    }
+  </nav>
+</CoverLetter>

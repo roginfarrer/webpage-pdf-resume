@@ -1,0 +1,18 @@
+---
+import CoverLetter from "../../templates/clean-professional/CoverLetter.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const letters = await getCollection("letters");
+  return letters.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<CoverLetter printUrl={`${entry.slug}-download`}>
+  <Content />
+</CoverLetter>
