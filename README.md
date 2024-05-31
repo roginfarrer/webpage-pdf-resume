@@ -2,6 +2,8 @@
 
 A straightforward resume or CV template for the web, print, or PDF. Built with [Astro](https://astro.build) and [PandaCSS](https://panda-css.com).
 
+> [View demo](https://webpage-pdf-resume.vercel.app)
+
 ## Features
 
 - Separation of data (name, experience, education, etc) from page templates, allowing you to create different look and feels without copying and pasting your information.
