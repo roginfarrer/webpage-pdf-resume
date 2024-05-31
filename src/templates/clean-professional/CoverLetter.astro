@@ -1,13 +1,9 @@
 ---
 import { css } from "styled-system/css";
-import Layout from "./Page.astro";
-import PrintButton from "src/components/PrintButton.astro";
+import Page from "./Page.astro";
 ---
 
-<Layout>
-  <div class={css({ pos: "fixed", bottom: "8", right: "8", zIndex: "10" })}>
-    <PrintButton href={Astro.props.printUrl} />
-  </div>
+<Page>
   <hr
     class={css({
       height: "4px",
@@ -25,4 +21,4 @@ import PrintButton from "src/components/PrintButton.astro";
   >
     <slot />
   </main>
-</Layout>
+</Page>

@@ -4,7 +4,7 @@ import GithubStarIcon from "src/components/GithubStarIcon.astro";
 import ArrowUpRightIcon from "src/components/ArrowUpRightIcon.astro";
 import PrintButton from "src/components/PrintButton.astro";
 
-import Layout from "./Page.astro";
+import Page from "./Page.astro";
 import { css } from "styled-system/css";
 import { flex } from "styled-system/patterns";
 import data from "../../data.json";
@@ -15,7 +15,7 @@ const subtitle = css({ fontWeight: "bold", fontSize: "lg" });
 const pdfFilename = `/${data.meta.name.toLowerCase().replaceAll(" ", "-")}-resume.pdf`;
 ---
 
-<Layout>
+<Page>
   <div
     class={css({ position: "fixed", bottom: "8", right: "8", zIndex: "10" })}
   >
@@ -142,7 +142,7 @@ const pdfFilename = `/${data.meta.name.toLowerCase().replaceAll(" ", "-")}-resum
       ))
     }
   </ul>
-</Layout>
+</Page>
 
 <script>
   const projects = document.querySelectorAll(
