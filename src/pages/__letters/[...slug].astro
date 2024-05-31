@@ -1,0 +1,23 @@
+---
+import CoverLetter from "../../templates/clean-professional/CoverLetter.astro";
+import { getCollection } from "astro:content";
+import PrintButton from "src/components/PrintButton.astro";
+import { css } from "styled-system/css/css";
+
+export async function getStaticPaths() {
+  const letters = await getCollection("letters");
+  return letters.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<CoverLetter>
+  <div class={css({ pos: "fixed", bottom: "8", right: "8", zIndex: "10" })}>
+    <PrintButton href={`${entry.slug}-download`} />
+  </div>
+  <Content />
+</CoverLetter>

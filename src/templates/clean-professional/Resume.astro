@@ -1,0 +1,170 @@
+---
+import SectionHeader from "src/components/SectionHeader.astro";
+import GithubStarIcon from "src/components/GithubStarIcon.astro";
+import ArrowUpRightIcon from "src/components/ArrowUpRightIcon.astro";
+import PrintButton from "src/components/PrintButton.astro";
+
+import Page from "./Page.astro";
+import { css } from "styled-system/css";
+import { flex } from "styled-system/patterns";
+import data from "../../data.json";
+import "@fontsource-variable/rubik";
+
+const subtitle = css({ fontWeight: "bold", fontSize: "lg" });
+
+const pdfFilename = `/${data.meta.name.toLowerCase().replaceAll(" ", "-")}-resume.pdf`;
+---
+
+<Page>
+  <div
+    class={css({ position: "fixed", bottom: "8", right: "8", zIndex: "10" })}
+  >
+    <PrintButton href={pdfFilename} />
+  </div>
+  <SectionHeader>About Me</SectionHeader>
+  <p>{data.meta.bio}</p>
+  <SectionHeader>Work</SectionHeader>
+  <div class={flex({ direction: "column", gap: { base: "6", xl: "8" } })}>
+    {
+      data.work.map((work) => {
+        return (
+          <div class={css({ xl: { mb: "1" } })}>
+            <h3 class={css({ fontSize: "lg", fontWeight: "bold", mb: "1" })}>
+              {work.position}
+            </h3>
+            <div
+              class={flex({
+                justify: "space-between",
+                mb: "2",
+                fontWeight: "500",
+                flexWrap: "wrap",
+                gap: "2",
+              })}
+            >
+              <div>{work.company}</div>
+              <div>
+                {work.startDate} - {work.endDate}, &nbsp;{work.location}
+              </div>
+            </div>
+            <ul
+              class={flex({
+                direction: "column",
+                pl: "4",
+                gap: { base: "2", xl: "3" },
+                mt: { base: "2", xl: "3" },
+              })}
+            >
+              {work.highlights.map((highlight) => (
+                <li class={css({ listStyleType: "disc" })}>{highlight}</li>
+              ))}
+            </ul>
+          </div>
+        );
+      })
+    }
+  </div>
+  <SectionHeader>Open Source</SectionHeader>
+  <ul class={flex({ direction: "column", gap: { base: "6" } })}>
+    {
+      data.projects.map((project) => {
+        const titleChild = project.url ? (
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noreferrer"
+            class={flex({ align: "center", textDecoration: "none" })}
+          >
+            {project.name}
+            <ArrowUpRightIcon
+              class={css({
+                color: "slate.400",
+                "a:hover &": { color: "currentColor" },
+              })}
+            />
+          </a>
+        ) : (
+          <>{project.name}</>
+        );
+        return (
+          <li
+            class={flex({ direction: "column", gap: "2" })}
+            data-project={project.repo}
+          >
+            <div class={flex()}>
+              <h3 class={subtitle}>{titleChild}</h3>
+              <p
+                class={flex({
+                  fontWeight: "bold",
+                  ml: "auto",
+                  align: "center",
+                  gap: "1.5",
+                })}
+                aria-label={`${project.stars} GitHub stars`}
+              >
+                <span
+                  aria-hidden="true"
+                  class={css({
+                    position: "relative",
+                    bottom: "1px",
+                  })}
+                >
+                  <GithubStarIcon />
+                </span>
+                <span class="project-stars">{project.stars}</span>
+              </p>
+            </div>
+            <p>{project.description}</p>
+          </li>
+        );
+      })
+    }
+  </ul>
+  <SectionHeader>Education</SectionHeader>
+  <ul class={flex({ direction: "column", gap: { base: "6" } })}>
+    {
+      data.education.map((edu) => (
+        <li class={flex({ align: "baseline", gap: "4" })}>
+          <h3 class={subtitle}>{edu.institution}</h3>
+          <p>{edu.degreeType}</p>
+          <p class={css({ ml: "auto" })}>{edu.endDate}</p>
+        </li>
+      ))
+    }
+  </ul>
+  <SectionHeader>Skills</SectionHeader>
+  <ul class={flex({ direction: "column", gap: { base: "6" } })}>
+    {
+      data.skills.map((skill) => (
+        <li class={flex({ direction: "column", gap: "2" })}>
+          <h3 class={subtitle}>{skill.name}</h3>
+          <p>{skill.keywords.join(", ")}</p>
+        </li>
+      ))
+    }
+  </ul>
+</Page>
+
+<script>
+  const projects = document.querySelectorAll(
+    "[data-project]",
+  ) as NodeListOf<HTMLElement>;
+  const headers = new Headers({
+    "X-GitHub-Api-Version": "2022-11-28",
+  });
+
+  projects.forEach(async (el) => {
+    const p = el.dataset.project;
+    const response = await fetch(`https://api.github.com/repos/${p}`, {
+      headers,
+    });
+    const data = await response.json();
+    if (data.stargazers_count) {
+      const starEl = el.querySelector(".project-stars");
+      if (starEl) {
+        let num = data.stargazers_count;
+        num = num > 999 ? `${(num / 1000).toFixed(1)}k` : num.toString();
+        starEl.innerHTML = num;
+      }
+    }
+  });
+</script>

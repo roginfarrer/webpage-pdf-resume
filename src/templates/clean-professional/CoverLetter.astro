@@ -1,0 +1,24 @@
+---
+import { css } from "styled-system/css";
+import Page from "./Page.astro";
+---
+
+<Page>
+  <hr
+    class={css({
+      height: "4px",
+      borderRadius: "xl",
+      bg: "$accent",
+      width: "100%",
+      border: 0,
+    })}
+  />
+  <main
+    class:list={[
+      "prose",
+      css({ mt: "12", _print: { px: "12", fontSize: "13px" } }),
+    ]}
+  >
+    <slot />
+  </main>
+</Page>

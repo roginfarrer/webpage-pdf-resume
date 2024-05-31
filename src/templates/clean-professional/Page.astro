@@ -1,0 +1,25 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { css } from "styled-system/css";
+
+import Masthead from "./Masthead.astro";
+import "@fontsource-variable/rubik";
+---
+
+<Layout>
+  <div
+    class={css({
+      maxWidth: { base: "50rem", _print: "100%" },
+      mx: "auto",
+    })}
+  >
+    <div
+      class={css({
+        p: { base: "6", sm: "8", md: "16", _print: "0" },
+      })}
+    >
+      <Masthead />
+      <slot />
+    </div>
+  </div>
+</Layout>

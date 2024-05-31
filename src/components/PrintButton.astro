@@ -1,5 +1,11 @@
 ---
 import { css } from "styled-system/css";
+
+type Props = {
+  href: string;
+};
+
+let { href } = Astro.props;
 ---
 
 <script>
@@ -17,9 +23,6 @@ import { css } from "styled-system/css";
         wrapper?.remove();
       }, 1000);
     });
-  });
-  document.querySelector("#print-btn")?.addEventListener("click", () => {
-    window.print();
   });
 </script>
 
@@ -40,15 +43,16 @@ import { css } from "styled-system/css";
   })}
   id="print-prompt"
 >
-  <button
+  <a
     id="print-btn"
+    href={href}
     class={css({
       color: "white",
       textDecoration: "underline",
       "&:focus, &:hover": {
         textDecoration: "none",
       },
-    })}>Print or Save as PDF</button
+    })}>View as PDF</a
   >
   <button
     id="print-close"
