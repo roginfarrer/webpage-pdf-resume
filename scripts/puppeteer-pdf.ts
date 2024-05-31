@@ -1,7 +1,11 @@
 import puppeteer from "puppeteer";
 import data from "../src/data.json";
 
-export async function createPdf(port: string) {
+export async function createPdf(
+  port: string,
+  log: (message: string) => void = console.log,
+  debug: (message: string) => void = console.log,
+) {
   if (!port) {
     throw new Error("Missing port");
   }
@@ -11,13 +15,12 @@ export async function createPdf(port: string) {
   });
   const page = await browser.newPage();
 
-  console.log(`opening page at port: ${port}`);
+  debug(`opening page at port: ${port}`);
   await page.goto(`http://localhost:${port}/`, { waitUntil: "networkidle2" });
 
-  await page.pdf({
-    path: `public/${data.meta.name.toLowerCase().replaceAll(" ", "-")}-resume.pdf`,
-  });
-  console.log("pdf created");
+  const path = `public/${data.meta.name.toLowerCase().replaceAll(" ", "-")}-resume.pdf`;
+  await page.pdf({ path });
+  log(`Created ${path}`);
 
   await browser.close();
 }

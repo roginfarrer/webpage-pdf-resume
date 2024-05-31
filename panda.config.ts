@@ -89,6 +89,13 @@ export default defineConfig({
           lineHeight: "1.15",
         },
       },
+      ".prose": {
+        "& p": {
+          marginBottom: "4",
+          lineHeight: "1.5",
+          fontSize: "lg",
+        },
+      },
     },
   },
 

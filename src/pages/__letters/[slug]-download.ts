@@ -1,4 +1,4 @@
-import type { APIContext, APIRoute } from "astro";
+import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
 import puppeteer from "puppeteer";
 
