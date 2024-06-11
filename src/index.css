@@ -16,5 +16,6 @@
 
   html {
     font-size: 11px !important;
+    font-variant-ligatures: none;
   }
 }
